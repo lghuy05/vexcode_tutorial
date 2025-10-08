@@ -1,7 +1,7 @@
 #include "main.h"
+#include "../include/subSystemHeaders/autonomous.hpp"
 #include "../include/subSystemHeaders/drive.hpp"
 #include "../include/subSystemHeaders/globals.hpp"
-
 /**
  * A callback function for LLEMU's center button.
  *
