@@ -2,6 +2,7 @@
 #include "../include/subSystemHeaders/autonomous.hpp"
 #include "../include/subSystemHeaders/drive.hpp"
 #include "../include/subSystemHeaders/globals.hpp"
+#include "pros/misc.h"
 /**
  * A callback function for LLEMU's center button.
  *
@@ -60,7 +61,7 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() { goSquare(); }
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -77,6 +78,10 @@ void autonomous() {}
  */
 void opcontrol() {
   while (true) {
+    if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+      autonomous();
+    }
+
     setDrive();
     pros::delay(20);
   }
